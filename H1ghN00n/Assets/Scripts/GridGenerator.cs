@@ -4,53 +4,50 @@ using UnityEngine;
 
 public class GridGenerator : MonoBehaviour
 {
-
-    public enum Direction { UL, UR, L, C, R, DL, DR };
-    public Dictionary<Direction, Vector2Int> HexDir = new Dictionary<Direction, Vector2Int>(){
-        { Direction.UL, new Vector2Int(-1,1) },
-        { Direction.UR, new Vector2Int(0,1) },
-        { Direction.L, new Vector2Int(-1,0) },
-        { Direction.C, new Vector2Int(0,0) },
-        { Direction.R, new Vector2Int(1,0) },
-        { Direction.DL, new Vector2Int(0,-1) },
-        { Direction.DR, new Vector2Int(1,-1) }
-    };
-
-    public GameObject hexPrefab;
-    int width = 8, height = 5;
+    [SerializeField] GameObject hexPrefab;
+    //Dependant of hex prefab in world space
     float xOffset = 0.5f , yOffset = 0.85f;
-    public GameObject[,] hexGrid;
-    public 
+    public Dictionary<Vector2Int,GameObject> hexGrid; 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        hexGrid = new GameObject[width, height];
+    public void GenerateGrid(Vector2Int dim) {
+
+        hexGrid = new Dictionary<Vector2Int,GameObject>();
 
         float xOffsetSum = 0;
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                GameObject hex = Instantiate(hexPrefab, new Vector3(j+xOffsetSum,i*yOffset,0), Quaternion.identity,transform);
+        for (int i = 0; i < dim.y; i++) {
+            for (int j = 0; j < dim.x; j++) {
+                GameObject hex = Instantiate(hexPrefab, new Vector3(j + xOffsetSum, i * yOffset, 1), Quaternion.identity, transform);
                 hex.name = $"[{j},{i}]";
-                hexGrid[j,i] = hex;
+                hexGrid[new Vector2Int(j,i)] = hex;
             }
             xOffsetSum += xOffset;
         }
-        CutCorners();
-        Debug.Log(hexGrid[1, 0].transform.position);
-    }
-
-    void CutCorners() {
-        for (int i = 0; i < height / 2; i++) {
-            for (int j = 0; j < height / 2 - i; j++) {
+        //Cut corners
+        for (int i = 0; i < dim.y / 2; i++) {
+            for (int j = 0; j < dim.y / 2 - i; j++) {
                 //This if statement is a quick fix for index error when width is smaller than height/2 and it won't
                 //work if tiles are not named exactly how they're named. Either fix later or don't rename tiles
-                if(GameObject.Find($"[{i},{j}]") && GameObject.Find($"[{width - 1 - i},{height - 1 - j}]")) {
-                    Destroy(hexGrid[i, j]);
-                    Destroy(hexGrid[width - 1 - i, height - 1 - j]);
+                if (GameObject.Find($"[{i},{j}]") && GameObject.Find($"[{dim.x - 1 - i},{dim.y - 1 - j}]")) {
+                    GameObject tmp = hexGrid[new Vector2Int(i, j)];
+                    hexGrid.Remove(GetCoord(tmp));
+                    Destroy(tmp);
+                    tmp = hexGrid[new Vector2Int(dim.x - 1 - i, dim.y - 1 - j)];
+                    hexGrid.Remove(GetCoord(tmp));
+                    Destroy(tmp);
                 }
             }
         }
     }
 
+    public Vector3 GetWorldPos(Vector2Int coord) {
+        return hexGrid[coord].transform.position;
+    }
+
+    public Vector2Int GetCoord(GameObject hex) {
+        //There will be only 1 value for each key so this is fine
+        foreach (KeyValuePair<Vector2Int,GameObject> myHex in hexGrid) {
+            if (myHex.Value == hex) return myHex.Key;
+        }
+        return new Vector2Int(-1,-1);
+    }
 }

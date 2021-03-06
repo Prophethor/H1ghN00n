@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6792144981197641586}
   - component: {fileID: 3541587891450199806}
+  - component: {fileID: 537566247604311903}
   m_Layer: 0
   m_Name: sandhex
   m_TagString: Untagged
@@ -79,3 +80,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &537566247604311903
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076238133765436498}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1.1666666}
+    newSize: {x: 1.2, y: 1.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.5, y: -0.3166667}
+      - {x: 0.5, y: 0.30833334}
+      - {x: 0.4416667, y: 0.35000002}
+      - {x: 0.083333336, y: 0.55833334}
+      - {x: 0.033333335, y: 0.5833334}
+      - {x: -0.033333335, y: 0.5833334}
+      - {x: -0.4416667, y: 0.35000002}
+      - {x: -0.5, y: 0.30833334}
+      - {x: -0.5, y: -0.3166667}
+      - {x: -0.4166667, y: -0.36666667}
+      - {x: -0.116666675, y: -0.5416667}
+      - {x: -0.058333337, y: -0.57500005}
+      - {x: -0.033333335, y: -0.5833334}
+      - {x: 0.041666668, y: -0.5833334}
+      - {x: 0.116666675, y: -0.5416667}
+      - {x: 0.4166667, y: -0.36666667}
