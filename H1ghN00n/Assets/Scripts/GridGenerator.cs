@@ -37,18 +37,20 @@ public class GridGenerator : MonoBehaviour
         { Direction.DL, new Vector2Int(0,-1) },
         { Direction.DR, new Vector2Int(1,-1) }
     };
-    //Dependant of hex prefab in world space
-    float xOffset = 0.5f , yOffset = 0.85f;
-    public Dictionary<Vector2Int,Hex> hexGrid; 
+    //Calculate manually in editor
+    float xOffset = 0.465f , yOffset = 0.83f;
+    public Dictionary<Vector2Int,Hex> hexGrid;
+    private Vector2Int dimension;
 
     public void GenerateGrid(Vector2Int dim) {
 
         hexGrid = new Dictionary<Vector2Int,Hex>();
+        dimension = dim;
 
         float xOffsetSum = 0;
         for (int i = 0; i < dim.y; i++) {
             for (int j = 0; j < dim.x; j++) {
-                GameObject hex = Instantiate(hexPrefab, new Vector3(j + xOffsetSum, i * yOffset, 1), Quaternion.identity, transform);
+                GameObject hex = Instantiate(hexPrefab, new Vector3(j*2*xOffset + xOffsetSum, i * yOffset, 1), Quaternion.identity, transform);
                 hex.name = $"[{j},{i}]";
                 hexGrid[new Vector2Int(j, i)] = new Hex(hex,HexState.Empty);
             }
@@ -114,5 +116,17 @@ public class GridGenerator : MonoBehaviour
             }
             count += 1;
         }
+    }
+
+    public int GetRowLen(int y) {
+        int count = 0;
+        foreach(Vector2 c in hexGrid.Keys) {
+            if (c.y == y) count++;
+        }
+        return count;
+    }
+
+    public Vector2Int GetFirstInRow(int y) {
+        return new Vector2Int(Mathf.Abs(dimension.y/2-y),y);
     }
 }
