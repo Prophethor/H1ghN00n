@@ -48,7 +48,7 @@ public class GridGenerator : MonoBehaviour
 
     //Game objects and parameters set up from editor
     [SerializeField] GameObject hexPrefab, obstaclePrefab;
-    [SerializeField] float xOffset = 0.465f, yOffset = 0.83f;
+    [SerializeField] float xOffset = 0.65f, yOffset = 1.2f;
 
     //Public parameters used by game manager
     public Dictionary<Vector2Int,Hex> hexGrid;
@@ -112,6 +112,14 @@ public class GridGenerator : MonoBehaviour
             if (tile.GetState() == HexState.Obstacle) {
                 tile.GetObstacle().GetComponent<Animator>().SetFloat("Speed", 1);
             }
+        }
+    }
+
+    //Cleanup after game ends
+    public void DestroyGrid() {
+        foreach(Vector2Int key in hexGrid.Keys) {
+            Destroy(hexGrid[key].GetTile());
+            if(hexGrid[key].GetState() == HexState.Obstacle) Destroy(hexGrid[key].GetObstacle());
         }
     }
 

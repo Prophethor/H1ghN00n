@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour
 {
     //Game objects set from editor
     [SerializeField] GameObject playerPrefab, enemyPrefab;
-    [SerializeField] Text playerHpText, enemyHpText, nowText;
+    [SerializeField] GameObject[] playerLives, enemyLives;
+    [SerializeField] GameObject phaseSign;
+    [SerializeField] Sprite[] phaseSignSprites;
 
     //Game object that are automatically found or initialized from this script
     GridGenerator gg;
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
     private Vector3 playerOffset = new Vector3(0,-0.3f,-1);
     private float moveSpeed = 7;
 
-    private void Start() {
+    public void StartGame() {
 
         //Generate grid
         gg = FindObjectOfType<GridGenerator>();
@@ -36,7 +38,7 @@ public class GameManager : MonoBehaviour
 
         //Initialise player
         playerCoord = new Vector2Int(gridWidth / 2 - 1, gridHeight / 2);
-        player = Instantiate(playerPrefab, gg.GetWorldPos(playerCoord) + playerOffset, Quaternion.identity); 
+        player = Instantiate(playerPrefab, gg.GetWorldPos(playerCoord) + playerOffset, Quaternion.identity);
         playerAnim = player.GetComponent<Animator>();
         gg.hexGrid[playerCoord].SetState(GridGenerator.HexState.Player);
         playerDest = player.transform.position - playerOffset;
@@ -53,13 +55,6 @@ public class GameManager : MonoBehaviour
 
         //Start the game
         StartCoroutine(MovePhase());
-    }
-
-    
-
-    private void Update() {
-        playerHpText.text = playerHp.ToString();
-        enemyHpText.text = enemyHp.ToString();
     }
 
     IEnumerator MovePhase() {
@@ -89,8 +84,8 @@ public class GameManager : MonoBehaviour
                             //Movement restrictions: If tile is 2 spaces from player, if player has enough moves and if tile is in left side of the grid
                             if (distP <=2 && turns-distP >=0 &&  rowCoord.x < gg.GetHalfRowLen(rowCoord.y) && gg.hexGrid[gg.GetCoord(hit.transform.gameObject)].GetState() == GridGenerator.HexState.Empty) {
 
-                                player.GetComponent<Animator>().SetTrigger("Jump");
-                                enemy.GetComponent<Animator>().SetTrigger("Jump");
+                                playerAnim.SetTrigger("Jump");
+                                enemyAnim.SetTrigger("Jump");
                                 
                                 //Caclulate relative coordinates of tapped tile and player tile and move player
                                 Vector2Int coordDif = gg.GetCoord(hit.transform.gameObject) - playerCoord;
@@ -121,13 +116,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SteadyPhase() {
 
-        player.GetComponent<Animator>().SetTrigger("Turn");
-        enemy.GetComponent<Animator>().SetTrigger("Turn");
+        playerAnim.SetTrigger("Turn");
+        enemyAnim.SetTrigger("Turn");
         yield return new WaitForSeconds(.55f);
 
-        nowText.gameObject.SetActive(true);
-        nowText.text = "Steady...";
-        nowText.color = Color.white;
+        phaseSign.SetActive(true);
+        phaseSign.GetComponent<Image>().sprite = phaseSignSprites[0];
 
         //Grayout all empty tiles
         foreach (GridGenerator.Hex hex in gg.hexGrid.Values) {
@@ -145,17 +139,18 @@ public class GameManager : MonoBehaviour
             currentTime += Time.deltaTime;
             if (currentTime > maxTime) break;
             if (Input.GetMouseButtonDown(0)) {
-                player.GetComponent<Animator>().SetTrigger("Aim");
-                enemy.GetComponent<Animator>().SetTrigger("Aim");
-                player.GetComponent<Animator>().SetTrigger("Hurt");
-                enemy.GetComponent<Animator>().SetTrigger("Shoot");
+                playerAnim.SetTrigger("Aim");
+                enemyAnim.SetTrigger("Aim");
+                playerAnim.SetTrigger("Hurt");
+                enemyAnim.SetTrigger("Shoot");
                 tooSoon = true;
                 playerHp -= 1;
+                playerLives[playerHp].GetComponent<CanvasGroup>().alpha = 0;
                 if (playerHp <= 0) {
-                    player.GetComponent<Animator>().SetBool("Die", true);
+                    playerAnim.SetBool("Die", true);
                 }
                 yield return new WaitForSeconds(.5f);
-                nowText.gameObject.SetActive(false);
+                phaseSign.SetActive(false);
                 break;
             }
         }
@@ -168,15 +163,43 @@ public class GameManager : MonoBehaviour
             StartCoroutine(Reset());
             yield return new WaitForSeconds(.5f);
         }
+        else {
+            yield return new WaitForSeconds(1);
+            if (enemyHp <= 0) {
+                enemyHp = 3;
+                playerHp = 3;
+                for(int i = 0; i < 3; i++) {
+                    playerLives[i].GetComponent<CanvasGroup>().alpha = 1;
+                    enemyLives[i].GetComponent<CanvasGroup>().alpha = 1;
+                }
+                turns = 3;
+                Destroy(player);
+                Destroy(enemy);
+                gg.DestroyGrid();
+                FindObjectOfType<UIEvents>().YouWon();
+            }
+            else {
+                enemyHp = 3;
+                playerHp = 3;
+                for (int i = 0; i < 3; i++) {
+                    playerLives[i].GetComponent<CanvasGroup>().alpha = 1;
+                    enemyLives[i].GetComponent<CanvasGroup>().alpha = 1;
+                }
+                turns = 3;
+                Destroy(player);
+                Destroy(enemy);
+                gg.DestroyGrid();
+                FindObjectOfType<UIEvents>().YouLost();
+            }
+        }
     }
 
     IEnumerator ShootPhase() {
 
-        player.GetComponent<Animator>().SetTrigger("Aim");
-        enemy.GetComponent<Animator>().SetTrigger("Aim");
+        playerAnim.SetTrigger("Aim");
+        enemyAnim.SetTrigger("Aim");
 
-        nowText.color = Color.red;
-        nowText.text = "Shoot!";
+        phaseSign.GetComponent<Image>().sprite = phaseSignSprites[1];
 
         float currentTime = 0;
         bool enemyHasShot = false;
@@ -187,13 +210,14 @@ public class GameManager : MonoBehaviour
             currentTime += Time.unscaledDeltaTime;
             //If player reacted in time frame try to deal damage to the enemy and proceed
             if (Input.GetMouseButtonDown(0)) {
-                player.GetComponent<Animator>().SetTrigger("Shoot");
+                playerAnim.SetTrigger("Shoot");
                 int playerShot = Random.Range(0, 100);
                 if (playerShot > CalculateCover(playerCoord)) {
-                    enemy.GetComponent<Animator>().SetTrigger("Hurt");
+                    enemyAnim.SetTrigger("Hurt");
                     enemyHp -= 1;
+                    enemyLives[enemyHp].GetComponent<CanvasGroup>().alpha = 0;
                     if (enemyHp <= 0) {
-                        enemy.GetComponent<Animator>().SetBool("Die", true);
+                        enemyAnim.SetBool("Die", true);
                     }
                 } else {
                     RandomObstacleHurt(playerCoord);
@@ -202,15 +226,16 @@ public class GameManager : MonoBehaviour
             }
             //If player hasn't reacted in time try to deal damage to the player but don't proceed
             if (!enemyHasShot && currentTime > enemyReactionTime + distanceIncrement) {
-                enemy.GetComponent<Animator>().SetTrigger("Shoot");
+                enemyAnim.SetTrigger("Shoot");
                 enemyHasShot = true;
-                nowText.color = Color.blue;
+                phaseSign.GetComponent<Image>().sprite = phaseSignSprites[2];
                 int enemyShot = Random.Range(0, 100), enemyChance = CalculateCover(enemyCoord);
                 if( enemyShot > enemyChance) {
-                    player.GetComponent<Animator>().SetTrigger("Hurt"); 
+                    playerAnim.SetTrigger("Hurt"); 
                     playerHp -= 1;
+                    playerLives[playerHp].GetComponent<CanvasGroup>().alpha = 0;
                     if (playerHp <= 0) {
-                        player.GetComponent<Animator>().SetBool("Die", true);
+                        playerAnim.SetBool("Die", true);
                     }
                 } else {
                     RandomObstacleHurt(enemyCoord);
@@ -221,16 +246,16 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        nowText.gameObject.SetActive(false);
         yield return new WaitForSeconds(.5f);
+        phaseSign.SetActive(false);
     }
 
     
 
     IEnumerator Reset() {
 
-        player.GetComponent<Animator>().SetTrigger("Turn");
-        enemy.GetComponent<Animator>().SetTrigger("Turn");
+        playerAnim.SetTrigger("Turn");
+        enemyAnim.SetTrigger("Turn");
 
         //Return all grayed out empty spaces to their normal state
         foreach (GridGenerator.Hex hex in gg.hexGrid.Values) {

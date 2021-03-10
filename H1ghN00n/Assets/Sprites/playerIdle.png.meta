@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 5db029dfda9222949a3a335768653737
+guid: 2d37952006a65c84492ff64339e38b52
 TextureImporter:
   fileIDToRecycleName:
     21300000: playerIdle_0
     21300002: playerIdle_1
     21300004: playerIdle_2
+    21300006: playerIdle_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -90,7 +91,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fae54b49cb07d8e49a85a1fa7e8439cb
+      spriteID: 4327c4cd1d72702458bebf3f1a8d9cae
       vertices: []
       indices: 
       edges: []
@@ -110,7 +111,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7eff57628bcaf8043bd19d54483388f7
+      spriteID: 5759f7f1b5c146b45adb7eacefbd528f
       vertices: []
       indices: 
       edges: []
@@ -130,7 +131,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be1aaa7784cd5404b937cbe264a062d7
+      spriteID: 492d3e7f0f7e5e1458964357fd688904
       vertices: []
       indices: 
       edges: []
@@ -138,7 +139,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e60e183b689bf74408c1edddd868e9df
+    spriteID: 31980182a60113444933cc2c62efc6bd
     vertices: []
     indices: 
     edges: []

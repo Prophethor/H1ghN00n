@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 09ef1203f4ab2f5428cb9f0e710a2895
+guid: 3f397318154deeb4f93fa38c0687c86d
 TextureImporter:
   fileIDToRecycleName:
     21300000: enemyTurnAround_0
@@ -91,7 +91,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14245a446fee3de47afeca6d2e3e9dd4
+      spriteID: 8403b515705f3ed42b8a0d40a41babfd
       vertices: []
       indices: 
       edges: []
@@ -111,7 +111,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d2b67103209cab4db3d46b853139d64
+      spriteID: e24bb607a4392214d8898a60265d7f19
       vertices: []
       indices: 
       edges: []
@@ -131,7 +131,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f36dcd9fc6f225e47b48cd2a20ee95b6
+      spriteID: d9471bfb69ad8f041bc98eccaed5026f
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e47fa9160fa3537469dd1d6ce6e75eec
+      spriteID: 70e33b3bfe1f4764c87c82c73ed12856
       vertices: []
       indices: 
       edges: []
@@ -159,7 +159,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 24ef402128280044cb275ae811b6b868
+    spriteID: be64e70934023b547aaf439444c34a18
     vertices: []
     indices: 
     edges: []

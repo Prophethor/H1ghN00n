@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 659a3bfd5a7c6554a9255a6598000040
+guid: 05598efe172241449a6aee53fa4ea03c
 TextureImporter:
   fileIDToRecycleName:
     21300000: cactusHurt_0
@@ -90,7 +90,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92e960b102d37ab4ca3374bc4d0d1da4
+      spriteID: 28e2602e9131b8f4b9aa42749b6d6719
       vertices: []
       indices: 
       edges: []
@@ -110,7 +110,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43422d8b764ef5a40872be8ac6a328d1
+      spriteID: ac16212ccf364f042895df0acd30cede
       vertices: []
       indices: 
       edges: []
@@ -130,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b97b0fcb85569f248ada957179965738
+      spriteID: 976a3c40e20895a40a458bbaa64813da
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5c02ca3b783d190428af3766e73e4c95
+    spriteID: dc3883e28ec79ba4991f35a0a745d20b
     vertices: []
     indices: 
     edges: []

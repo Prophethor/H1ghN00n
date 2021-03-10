@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a12f20d5309c4094f8330c24c3659a5f
+guid: 4002f20f57e62cc4aa5ae59ebd984938
 TextureImporter:
   fileIDToRecycleName:
     21300000: enemyIdle_0
@@ -90,7 +90,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 737f9274cf306834ca426e0cea109a00
+      spriteID: c518c64b174cb894bb66133a194418d6
       vertices: []
       indices: 
       edges: []
@@ -110,7 +110,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42eefbb05bd95094d866f13d76fa6d8b
+      spriteID: dcb5a71dca96a464f8e22adf93f16f8c
       vertices: []
       indices: 
       edges: []
@@ -130,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00ac5e6399acc0d448df87781dfb4bc0
+      spriteID: d394c9051782d9e4586eddfdb0d38d1c
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 272aae0f0f44cba4f97debc064c841e1
+    spriteID: 714b52644dc226e4c9e1fb36fb93d5cf
     vertices: []
     indices: 
     edges: []

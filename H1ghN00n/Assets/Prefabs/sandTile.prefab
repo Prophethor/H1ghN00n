@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6792144981197641586}
   - component: {fileID: 3541587891450199806}
-  - component: {fileID: 4374416820659422743}
+  - component: {fileID: 4453713767564094056}
   m_Layer: 0
-  m_Name: sandTile
+  m_Name: SandTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076238133765436498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.498, y: -0.507, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,18 +69,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2a12e5a928252c3488c49b2f3acd74e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b540f7e2838a5a247a7e44f482745e57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.2, y: 1.4}
+  m_Size: {x: 1.4, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &4374416820659422743
+--- !u!60 &4453713767564094056
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,21 +97,20 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0666667, y: 1.0666667}
-    newSize: {x: 1.2, y: 1.4}
+    oldSize: {x: 1.4, y: 1.6}
+    newSize: {x: 1.4, y: 1.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.0055086613, y: 0.49652195}
-      - {x: -0.00062668324, y: 0.49652195}
-      - {x: -0.44152102, y: 0.2817886}
-      - {x: -0.44130474, y: 0.28425136}
-      - {x: -0.44695416, y: -0.28328145}
-      - {x: 0.0015567541, y: -0.5028902}
-      - {x: 0.0007264018, y: -0.5026827}
-      - {x: -0.0008302629, y: -0.49989623}
-      - {x: 0.44617575, y: -0.2771534}
-      - {x: 0.44744003, y: 0.27954197}
+    - - {x: -0.0008637905, y: 0.70079124}
+      - {x: -0.6454818, y: 0.3955585}
+      - {x: -0.64481014, y: 0.3966589}
+      - {x: -0.65016997, y: -0.39833462}
+      - {x: -0.650281, y: -0.39613765}
+      - {x: -0.65241706, y: -0.39497724}
+      - {x: 0.003964126, y: -0.7026141}
+      - {x: 0.6474288, y: -0.3974288}
+      - {x: 0.65162456, y: 0.39746815}

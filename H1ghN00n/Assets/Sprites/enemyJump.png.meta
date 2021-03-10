@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d8864c5d38e379840a1afd0c117aa232
+guid: ac50e0f233a94bd448f24fbf64a79cce
 TextureImporter:
   fileIDToRecycleName:
     21300000: enemyJump_0
@@ -92,7 +92,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d2f30c7e4de12b48b6d735f3e89e13d
+      spriteID: 473a4759760d35740a3b65261ea888fc
       vertices: []
       indices: 
       edges: []
@@ -112,7 +112,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21fe06ff9a3638c41a34a40ad5b19827
+      spriteID: 59536970b875c4d41a7fdc98cc4de6bf
       vertices: []
       indices: 
       edges: []
@@ -132,7 +132,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df79476307a67774fb266b55671de9b4
+      spriteID: 81c4fec26a2c51c4597bac280e63c95a
       vertices: []
       indices: 
       edges: []
@@ -152,7 +152,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9908c76cffbce54b9114fe822e02ae1
+      spriteID: 8ade73f4872a527459ad86f299ed0417
       vertices: []
       indices: 
       edges: []
@@ -172,7 +172,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a013cd6ab9366b047b78f0e976ed4bdd
+      spriteID: 41c27ca17365fcc49bc7fd5d1b5cecee
       vertices: []
       indices: 
       edges: []
@@ -180,7 +180,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 44e5f22dbc9d4d5478292530f937fca6
+    spriteID: 8cd3238b9a998bf4fb2e8f0071be974e
     vertices: []
     indices: 
     edges: []

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e80b342a018989749a60401d55e6df50
+guid: 1b0d10c53d436f54d87c89130f985a19
 TextureImporter:
   fileIDToRecycleName:
     21300000: enemyShoot_0
@@ -91,7 +91,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a13b787bc719af46b41bebb6235868c
+      spriteID: 708c7441eab557d4baaa689007178a3b
       vertices: []
       indices: 
       edges: []
@@ -111,7 +111,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3aca9d171466964b99a0f3bc7bead68
+      spriteID: d320134d71e7b7e43bd2764c9dac69f3
       vertices: []
       indices: 
       edges: []
@@ -131,7 +131,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28d0a9454a93d5349a68954f33aaa331
+      spriteID: 6035945efefca5741983860859c642e9
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4923aa7ec7650a34eb6a253c6664ff38
+      spriteID: 4b62b6302774ec246b94ba528609dd7b
       vertices: []
       indices: 
       edges: []
@@ -159,7 +159,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d2e9253460f62894fb4e9824e78b3578
+    spriteID: 924f175fda0befb4dbd264871aeb963c
     vertices: []
     indices: 
     edges: []
